@@ -1,13 +1,34 @@
-import { FC } from 'react'
-import { Text, View } from 'react-native'
+import { createContext, useState,  } from 'react'
 
-interface Props {
+type AuthContextProps = {
+  isAuthenticated : boolean,
+  signIn: ()=>void,
+  logOut: ()=>void
 }
 
-export const AuthContext:FC <Props> = () => {
+export const AuthContext = createContext({} as AuthContextProps);
+
+export const AuthProvider = ({ children } : { children: JSX.Element | JSX.Element[]}) => {
+         //Variable, función para actualizar la variable 
+  const [ isAuthenticated, setIsAuthenticated ] = useState(false);
+
+  const signIn = () => {
+          setIsAuthenticated(true);
+  }
+
+  const logOut = () =>{
+    setIsAuthenticated(false);
+  }
+
  return (
-   <View>
-    <Text>label</Text>
-   </View>
+  <AuthContext.Provider value={
+    {
+      isAuthenticated,
+      signIn,
+      logOut
+    }
+  }>
+   { children } 
+  </AuthContext.Provider>
  )
 }

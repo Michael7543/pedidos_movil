@@ -5,7 +5,7 @@ import { View, Text, Button } from 'react-native'
 interface Props {
 }
 
-export const ClienteForm:FC <Props> = () => {
+export const LineaForm:FC <Props> = () => {
 
   const navigation = useNavigation();
 
@@ -13,11 +13,11 @@ export const ClienteForm:FC <Props> = () => {
    <>
     <View>
     <Text> {/* Text = <p></p> */}
-        Formulario de clientes
+        Formulario de Linea de Investigacion
     </Text>
     <Button 
       title='Regresar a la lista'
-      onPress={()=>navigation.navigate("ClienteLista" as never)}
+      onPress={()=>navigation.navigate("LineaLista" as never)}
     />
    </View>
    </>
